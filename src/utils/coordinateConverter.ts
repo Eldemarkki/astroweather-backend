@@ -1,4 +1,5 @@
 import { KnownLocation } from "./KnownLocation";
+import { remap } from "./numberUtils";
 
 // Anchorage
 const knownLocationA: KnownLocation = {
@@ -16,7 +17,6 @@ const knownLocationB: KnownLocation = {
 	longitude: 174.821199
 }
 
-const remap = (low1: number, high1: number, low2: number, high2: number, value: number) => low2 + (value - low1) * (high2 - low2) / (high1 - low1);
 
 export const convertX = (longitude: number) => {
 	return remap(

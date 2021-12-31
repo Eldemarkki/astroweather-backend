@@ -1,13 +1,15 @@
 import express from "express"
 import { getWeather } from "../cache/weatherCache";
-import { cloudinessExtractor, temperatureExtractor } from "../data/dataExtractors";
+import { cloudinessExtractor, moonExtractor, sunExtractor, temperatureExtractor } from "../data/dataExtractors";
 import { CoordinateRequest, parseCoordinates } from "../middleware/coordinateMiddleware";
 
 const router = express.Router();
 
 const dataExtractors = [
 	temperatureExtractor,
-	cloudinessExtractor
+	cloudinessExtractor,
+	moonExtractor,
+	sunExtractor
 ]
 
 dataExtractors.forEach(extractor => {

@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/", parseCoordinates, async (req: CoordinateRequest, res) => {
 	const coordinate = req.coordinate;
-	const weather = getWeather(coordinate!);
+	const weather = await getWeather(coordinate!);
 
 	if (weather) {
 		res.json(weather)

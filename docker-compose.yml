@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - backend
+      - lightpollutionapi
+    ports:
+      - 8080:80
+    container_name: astroweather-reverse_proxy
+  backend:
+    image: astroweather-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - OPENWEATHERMAP_API_KEY=${OPENWEATHERMAP_API_KEY}
+  lightpollutionapi:
+    image: light-pollution-api
+    build:
+      context: ./lightpollutionapi/
+      dockerfile: Dockerfile

@@ -1,4 +1,5 @@
 gunicorn
 flask
+flask_cors
 numpy
 pyvips
